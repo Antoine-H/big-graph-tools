@@ -165,6 +165,10 @@ end) = struct
       (if nsweep mod 2 = 1 then Max Dsum' else Max Dsum)
     else periodic_heuristic big_period (nsweep - 5)
 
+  let periodic_heuristic_eriode nsweep =
+      if nsweep mod 2 = 1 then Min Ecc else Max Ecc
+
+
   exception Break
 
   type diam_info = {
@@ -177,7 +181,7 @@ end) = struct
 
   let diameter_radius_scc 
       ?(diam_only=false) ?(max_sweeps=max_int)
-      ?(heuristic=periodic_heuristic_eriod)
+      ?(heuristic=periodic_heuristic_eriode)
       g u_scc =
 
     (* We need the reverse graph. *)
